@@ -1,0 +1,1140 @@
+/* style.css */
+
+/* 1. CSS 变量定义 */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --primary-blue: #0d6efd;
+    --accent-blue: #007bff;
+    --border-color: #dee2e6;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. 全局重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: #212529;
+    background-image: url('../img/global-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* 3. 全屏启动页样式 */
+#landing-page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-image: url('../img/tech-background.jpg');
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 1s ease-out, visibility 1s;
+    visibility: visible;
+}
+
+#landing-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.landing-content h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.enter-prompt {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    opacity: 0.9;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease-in-out 0.5s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. 主内容区包裹层 */
+#main-content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: transparent;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 5. 头部与导航栏样式 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 3rem;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: var(--primary-blue);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-blue);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a.active {
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* 6. 内容区域通用样式 */
+.content-section {
+    padding: 4rem 3rem;
+    max-width: 1400px;
+    width: 95%;
+    margin: 2rem auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: var(--primary-blue);
+}
+
+/* 7. 关于我们 */
+#about-us {
+    background-image: url('../img/tech-background-2.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 5rem 3rem;
+    flex-grow: 1;
+}
+
+#about-us h2 {
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+#about-us p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #f8f9fa;
+    margin: 1.5rem 0;
+    text-align: center;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+#about-us h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    margin: 3rem 0 2rem;
+    text-align: center;
+    border-left: none;
+    border-bottom: 3px solid var(--primary-blue);
+    padding: 0 0 0.5rem 0;
+    display: inline-block;
+}
+
+#about-us h4 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: #f0f8ff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    margin: 2.5rem 0 1.5rem;
+    text-align: center;
+    padding: 0;
+}
+
+#about-us p strong,
+#about-us p span[style*="font-weight: 700"] {
+    color: #ffffff;
+    font-weight: 700;
+    background-color: rgba(13, 110, 253, 0.3);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* 8. 图片轮播样式 */
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    margin: 3rem auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background-color: #ffffff;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    height: 14px;
+    width: 14px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--primary-blue);
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 9. 页脚样式 */
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 5%;
+    flex-shrink: 0;
+    margin-top: auto;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 10. 通用列表页样式 */
+.page-header {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: transparent;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.page-header h2 {
+    font-size: 2.8rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    color: #6c757d;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.content-item, .publication-item {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-item:hover, .publication-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.content-item h3, .publication-item h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.content-item p, .publication-item p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.publication-item .meta {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+/* 11. 团队成员页面样式 */
+.advisors-container {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border-bottom: 2px solid #eee;
+    width: 100%;
+}
+
+.advisors-container h3 {
+    font-size: 2.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+}
+
+.advisor-card {
+    display: inline-block;
+    margin: 0 1.5rem;
+    padding: 1.5rem;
+    min-width: 220px;
+}
+
+.team-members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    justify-items: center;
+}
+
+.team-member-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+}
+
+.team-member-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.team-member-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.4rem;
+}
+
+.team-member-card .title {
+    color: var(--primary-blue);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.team-member-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* 12. 联系我们页面样式 */
+.contact-details {
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 2;
+    width: 100%;
+}
+
+.contact-details p {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.navigation-button-container {
+    text-align: center;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.cta-button:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+    color: #ffffff;
+}
+
+/* 13. 新闻页面样式 */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.news-article {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.news-article h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+.news-images {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.award-certificate {
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.award-certificate:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* 14. 优化的图片模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeInModal 0.3s ease;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #ff6b6b;
+    text-decoration: none;
+    transform: scale(1.1);
+    background: rgba(255, 107, 107, 0.2);
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* 15. 研究方向页面样式 */
+.research-areas {
+    display: grid;
+    gap: 2.5rem;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.research-area {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.research-area:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.research-area h3 {
+    color: var(--primary-blue);
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.research-area p {
+    line-height: 1.8;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+/* 16. 联系页面专用样式 */
+.contact-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-page #main-content-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contact-page main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.contact-page .content-section {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.contact-page .contact-details {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.contact-page .contact-details p {
+    font-size: 1.4rem;
+    margin: 1.5rem 0;
+    color: var(--text-color);
+}
+
+.contact-page .contact-details strong {
+    color: var(--primary-blue);
+}
+
+.contact-page footer {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.contact-page .navigation-button-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* 17. 联系页面新版本样式 */
+.contact-info-only {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    max-width: 800px;
+    width: 100%;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: #e9ecef;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.contact-text h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.contact-text p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.simple-contact-actions {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+.action-btn.primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.action-btn.primary:hover {
+    background: var(--accent-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+}
+
+.action-btn.secondary {
+    background: #28a745;
+    color: white;
+}
+
+.action-btn.secondary:hover {
+    background: #218838;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* 18. 响应式设计 - 统一整理 */
+@media (max-width: 768px) {
+    /* 整体布局 */
+    body {
+        font-size: 14px;
+    }
+    
+    /* 头部导航优化 */
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    header .logo {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    nav ul li {
+        width: 100%;
+        margin: 0.5rem;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 0.8rem;
+        border-radius: 8px;
+        background: rgba(13, 110, 253, 0.1);
+    }
+    
+    /* 主内容区域 */
+    main {
+        padding: 1rem;
+    }
+    
+    .content-section {
+        padding: 2.5rem 2%;
+        margin: 1rem auto;
+        width: 96%;
+    }
+
+    .content-section h2,
+    #about-us h2 {
+        font-size: 2.2rem;
+    }
+    
+    #about-us {
+        padding: 3rem 1.5rem;
+        min-height: 80vh;
+    }
+
+    #about-us p {
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+    }
+    
+    #about-us h3 {
+        font-size: 1.7rem;
+    }
+
+    #about-us h4 {
+        font-size: 1.3rem;
+    }
+
+    .landing-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .page-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
+    /* 联系信息卡片 */
+    .contact-info-only {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .contact-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .contact-icon {
+        font-size: 1.8rem;
+        min-width: 45px;
+    }
+    
+    .contact-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .contact-text p {
+        font-size: 0.95rem;
+    }
+    
+    /* 按钮优化 */
+    .action-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .simple-contact-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* 底部 */
+    footer {
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
+
+    /* 其他组件 */
+    .modal-content {
+        width: 95%;
+        max-width: 95%;
+        max-height: 80%;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    #caption {
+        width: 90%;
+        font-size: 14px;
+        bottom: 10px;
+        padding: 15px 10px;
+    }
+
+    .team-members-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .advisor-card {
+        display: block;
+        margin: 1rem auto;
+    }
+
+    .carousel-container {
+        max-width: 100%;
+        margin: 2rem auto;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .award-certificate {
+        max-width: 320px;
+    }
+
+    .contact-page main {
+        padding: 1rem;
+    }
+    
+    .contact-page .content-section {
+        padding: 2rem;
+    }
+
+    .contact-page .contact-details p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .content-section {
+        padding: 2rem 1%;
+        width: 98%;
+    }
+    
+    header {
+        padding: 0.5rem;
+    }
+    
+    nav ul li {
+        margin: 0.25rem;
+    }
+    
+    footer {
+        padding: 1.5rem 2%;
+    }
+
+    .carousel-container {
+        margin: 1.5rem auto;
+    }
+
+    .award-certificate {
+        max-width: 280px;
+    }
+
+    .team-member-card {
+        padding: 1.5rem;
+    }
+
+    .contact-details p {
+        font-size: 1.2rem;
+    }
+    
+    .page-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-item {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .action-btn {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+    }
+    
+    /* 超小屏幕图片模态框优化 */
+    .modal-content {
+        max-width: 98%;
+        max-height: 75%;
+    }
+    
+    .close-modal {
+        font-size: 25px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    #caption {
+        font-size: 12px;
+        padding: 10px;
+    }
+}    
